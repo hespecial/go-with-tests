@@ -1,9 +1,7 @@
 package main
 
-const repeatCount = 5
-
-func Repeat(character string) (res string) {
-	for i := 0; i < repeatCount; i++ {
+func Repeat(character string, count int) (res string) {
+	for i := 0; i < count; i++ {
 		res += character
 	}
 	return
