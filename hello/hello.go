@@ -1,11 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-func Hello() string {
-	return "Hello, world"
+func Hello(name string) string {
+	return strings.Join([]string{"Hello", name}, " ")
 }
 
 func main() {
-	fmt.Println(Hello())
+	fmt.Println(Hello("world"))
 }
