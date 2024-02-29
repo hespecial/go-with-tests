@@ -5,10 +5,10 @@ import (
 	"strings"
 )
 
-const englishHelloPrefix = "Hello"
 const spanish = "Spanish"
-const spanishHelloPrefix = "Hola"
 const french = "French"
+const englishHelloPrefix = "Hello"
+const spanishHelloPrefix = "Hola"
 const frenchHelloPrefix = "Bonjour"
 
 func greetingPrefix(language string) (prefix string) {
@@ -27,9 +27,9 @@ func Hello(name, language string) string {
 	if name == "" {
 		name = "world"
 	}
-	return strings.Join([]string{greetingPrefix(language), name}, " ")
+	return strings.Join([]string{greetingPrefix(language), name}, ", ")
 }
 
 func main() {
-	fmt.Println(Hello("world", ""))
+	fmt.Println(Hello("Hespecial", french))
 }
