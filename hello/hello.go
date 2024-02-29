@@ -5,8 +5,13 @@ import (
 	"strings"
 )
 
+const helloPrefix = "Hello"
+
 func Hello(name string) string {
-	return strings.Join([]string{"Hello", name}, " ")
+	if name == "" {
+		name = "world"
+	}
+	return strings.Join([]string{helloPrefix, name}, " ")
 }
 
 func main() {
