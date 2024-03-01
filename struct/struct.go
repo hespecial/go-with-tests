@@ -1,11 +1,27 @@
 package main
 
-func Perimeter(width float64, height float64) (perimeter float64) {
-	perimeter = (width + height) * 2
+import "math"
+
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+type Circle struct {
+	Radium float64
+}
+
+func (rectangle Rectangle) Perimeter() (perimeter float64) {
+	perimeter = (rectangle.Width + rectangle.Height) * 2
 	return
 }
 
-func Area(width float64, height float64) (Area float64) {
-	Area = width * height
+func (rectangle Rectangle) Area() (area float64) {
+	area = rectangle.Width * rectangle.Height
+	return
+}
+
+func (circle Circle) Area() (area float64) {
+	area = math.Pi * circle.Radium * circle.Radium
 	return
 }
