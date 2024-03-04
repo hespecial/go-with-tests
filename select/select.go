@@ -1,13 +1,26 @@
 package main
 
-import "net/http"
+import (
+	"errors"
+	"fmt"
+	"net/http"
+	"time"
+)
 
-func Racer(a, b string) (winner string) {
+var tenSecondsTimeout = 10 * time.Second
+
+func Racer(a, b string) (string, error) {
+	return ConfigurableRacer(a, b, tenSecondsTimeout)
+}
+
+func ConfigurableRacer(a, b string, timeout time.Duration) (winner string, err error) {
 	select {
 	case <-ping(a):
 		winner = a
 	case <-ping(b):
 		winner = b
+	case <-time.After(timeout):
+		err = errors.New(fmt.Sprintf("timed out waiting for %s and %s", a, b))
 	}
 	return
 }
