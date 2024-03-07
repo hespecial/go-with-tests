@@ -16,10 +16,11 @@ func walk(x interface{}, fn func(input string)) {
 	case reflect.Struct:
 		numberOfValues = v.NumField()
 		getField = v.Field
-	case reflect.Slice:
+	case reflect.Slice, reflect.Array:
 		numberOfValues = v.Len()
 		getField = v.Index
 	}
+
 	for i := 0; i < numberOfValues; i++ {
 		walk(getField(i).Interface(), fn)
 	}
