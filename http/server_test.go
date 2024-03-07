@@ -20,4 +20,18 @@ func TestPlayerServer(t *testing.T) {
 			t.Errorf("got '%s', want '%s'", got, want)
 		}
 	})
+
+	t.Run("returns Floyd's score", func(t *testing.T) {
+		response := httptest.NewRecorder()
+		request, _ := http.NewRequest(http.MethodGet, "/players/Floyd", nil)
+
+		PlayerServer(response, request)
+
+		got := response.Body.String()
+		want := "10"
+
+		if got != want {
+			t.Errorf("got '%s', want '%s'", got, want)
+		}
+	})
 }
