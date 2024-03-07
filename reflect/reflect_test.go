@@ -12,6 +12,29 @@ func TestWalk(t *testing.T) {
 		ExpectedCalls []string
 	}{
 		{
+			"Struct with one string field",
+			struct {
+				Name string
+			}{"Hespecial"},
+			[]string{"Hespecial"},
+		},
+		{
+			"Struct with two string fields",
+			struct {
+				Name string
+				City string
+			}{"Hespecial", "Wuhan"},
+			[]string{"Hespecial", "Wuhan"},
+		},
+		{
+			"Struct with non string field",
+			struct {
+				Name string
+				Age  int
+			}{"Hespecial", 18},
+			[]string{"Hespecial"},
+		},
+		{
 			"Nested fields",
 			Person{
 				"Hespecial",
