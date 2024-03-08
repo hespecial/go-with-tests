@@ -168,8 +168,6 @@ func newLeagueRequest() *http.Request {
 	return req
 }
 
-const jsonContentType = "application/json"
-
 func assertContentType(t *testing.T, response *httptest.ResponseRecorder, want string) {
 	t.Helper()
 	if response.Header().Get("content-type") != want {
