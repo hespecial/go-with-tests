@@ -4,12 +4,22 @@ import (
 	"io"
 )
 
-type FileSystemStore struct {
+type FileSystemPlayerStore struct {
 	database io.ReadSeeker
 }
 
-func (f *FileSystemStore) GetLeague() []Player {
+func (f *FileSystemPlayerStore) GetLeague() []Player {
 	f.database.Seek(0, 0)
 	league, _ := NewLeague(f.database)
 	return league
+}
+
+func (f *FileSystemPlayerStore) GetPlayerScore(name string) (wins int) {
+	for _, v := range f.GetLeague() {
+		if name == v.Name {
+			wins = v.Wins
+			break
+		}
+	}
+	return
 }
